@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "django-test/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "django-test/wsgi.py"
+    }
+  ],
+  "build": {
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "django_test.settings"
+    },
+    "commands": {
+      "build": "python manage.py collectstatic --noinput"
+    }
+  }
+}
